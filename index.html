@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minimind Studio · Siti web personalizzati e su misura</title>
+<meta name="description" content="Realizzo siti su misura per saloni, centri estetici, barbieri e piccole attività: prenotazioni online e assistente chat. Demo gratuita con il nome della tua attività entro 48 ore.">
+<meta property="og:title" content="Minimind Studio · Siti web personalizzati e su misura">
+<meta property="og:description" content="Un sito su misura che prenota anche quando hai chiuso. Demo gratuita con il nome della tua attività entro 48 ore.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="theme-color" content="#12372A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312372A'/%3E%3Ccircle cx='11' cy='16' r='4' fill='%23F1D36B'/%3E%3Ccircle cx='21' cy='16' r='4' fill='%23A9C3B1'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted-grotesk-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted-grotesk-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted-grotesk-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted-grotesk-latin-700-normal.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted-grotesk-latin-800-normal.woff2) format("woff2");font-weight:800;font-style:normal;font-display:swap}
+
+:root{
+  --carta:#F3F5F2;
+  --bosco:#12372A;
+  --bosco-2:#1B4A39;
+  --burro:#F1D36B;
+  --salvia:#A9C3B1;
+  --inchiostro:#17201B;
+  --grigio:#56625B;
+  --linea:#D3DBD5;
+  --bianco:#FFFFFF;
+  --max:1120px;
+  --pad:clamp(20px,5vw,48px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--carta);color:var(--inchiostro);font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0 0 1em}
+h1,h2,h3{margin:0;font-weight:800;line-height:1.05;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--burro);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--burro);color:var(--bosco);padding:8px 14px;border-radius:6px;z-index:10;font-weight:700}
+.skip:focus{left:8px}
+
+/* ---------- testata ---------- */
+.testata{position:sticky;top:0;z-index:5;background:rgba(243,245,242,.92);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--linea)}
+.testata .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
+.marchio{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--bosco)}
+.marchio .punti{display:flex;gap:3px}
+.marchio .punti i{width:11px;height:11px;border-radius:50%;background:var(--bosco)}
+.marchio .punti i:last-child{background:var(--salvia)}
+.marchio small{font-weight:500;font-size:20px;color:var(--grigio)}
+.menu{display:flex;align-items:center;gap:28px;font-size:16px;font-weight:500}
+.menu a{text-decoration:none;color:var(--grigio)}
+.menu a:hover{color:var(--bosco)}
+.menu .bottone{color:var(--bosco)}
+
+.bottone{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid var(--bosco);background:var(--bosco);color:var(--carta);cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
+.bottone:hover{background:var(--bosco-2);border-color:var(--bosco-2)}
+.bottone.giallo{background:var(--burro);border-color:var(--burro);color:var(--bosco)}
+.bottone.giallo:hover{background:#F6DE8C;border-color:#F6DE8C}
+.bottone.vuoto{background:transparent;color:var(--bosco)}
+.bottone.vuoto:hover{background:var(--bosco);color:var(--carta)}
+.menu .bottone{min-height:40px;padding:0 18px;background:var(--burro);border-color:var(--burro)}
+
+/* ---------- apertura ---------- */
+.apertura{padding:clamp(48px,8vw,104px) 0 clamp(56px,8vw,96px)}
+.apertura .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(32px,6vw,80px);align-items:center}
+.apertura h1{font-size:clamp(42px,6.6vw,82px);color:var(--bosco);max-width:12ch;letter-spacing:-.035em;line-height:.98}
+.apertura .sotto{font-size:clamp(18px,1.6vw,21px);color:var(--grigio);max-width:34em;margin:28px 0 36px}
+.azioni{display:flex;flex-wrap:wrap;gap:12px}
+
+/* telefono con la chat */
+.scena{position:relative;justify-self:center;width:100%;max-width:340px}
+.telefono{background:var(--bosco);border-radius:38px;padding:12px;box-shadow:0 30px 60px -30px rgba(18,55,42,.55)}
+.schermo{background:var(--bianco);border-radius:28px;overflow:hidden;height:500px;display:flex;flex-direction:column}
+.schermo .barra{display:flex;justify-content:space-between;align-items:center;padding:14px 22px 6px;font-size:13px;font-weight:700;color:var(--inchiostro)}
+.schermo .barra span:last-child{display:flex;gap:3px;align-items:flex-end;height:12px}
+.schermo .barra span:last-child i{width:5px;border-radius:2px;background:var(--inchiostro)}
+.schermo .chi{display:flex;align-items:center;gap:10px;padding:10px 18px 12px;border-bottom:1px solid #E7ECE8}
+.schermo .avatar{width:34px;height:34px;border-radius:50%;background:var(--salvia);display:grid;place-items:center;font-weight:800;color:var(--bosco);font-size:15px}
+.schermo .chi b{display:block;font-size:14px;line-height:1.2}
+.schermo .chi small{font-size:12px;color:#3B8A5E}
+.messaggi{flex:1;padding:16px 14px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.4;overflow:hidden}
+.msg{max-width:84%;padding:9px 13px;border-radius:18px}
+.msg.cliente{align-self:flex-end;background:var(--bosco);color:var(--carta);border-bottom-right-radius:6px}
+.msg.aria{align-self:flex-start;background:#EDF1EE;border-bottom-left-radius:6px}
+.msg.digita{display:flex;gap:4px;padding:13px 14px}
+.msg.digita i{width:7px;height:7px;border-radius:50%;background:#9AA69F;animation:salta 1s infinite}
+.msg.digita i:nth-child(2){animation-delay:.15s}
+.msg.digita i:nth-child(3){animation-delay:.3s}
+@keyframes salta{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-3px);opacity:1}}
+.js .msg{opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease}
+.js .msg.visibile{opacity:1;transform:none}
+.cornice{position:relative}
+.avviso{position:absolute;left:-28px;right:28px;bottom:18px;background:var(--burro);color:var(--bosco);border-radius:16px;padding:12px 16px;font-size:14px;line-height:1.35;box-shadow:0 14px 30px -18px rgba(18,55,42,.7)}
+.avviso b{display:block;font-size:15px}
+.js .avviso{opacity:0;transform:translateY(10px) scale(.98);transition:opacity .45s ease,transform .45s ease}
+.js .avviso.visibile{opacity:1;transform:none}
+.didascalia{margin:20px 0 0;text-align:center;font-size:14px;color:var(--grigio)}
+.didascalia button{font:inherit;color:var(--bosco);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* ---------- sezioni ---------- */
+.sezione{scroll-margin-top:68px;padding:clamp(64px,9vw,112px) 0;border-top:1px solid var(--linea)}
+.sezione h2{font-size:clamp(32px,4.2vw,52px);color:var(--bosco);max-width:18ch}
+.intro{color:var(--grigio);max-width:36em;margin-top:18px;font-size:19px}
+
+.cosa{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px);margin-top:56px}
+.cosa h3{font-size:23px;color:var(--bosco);margin-bottom:12px;letter-spacing:-.015em}
+.cosa p{color:var(--grigio);margin:0}
+.cosa .segno{width:44px;height:44px;margin-bottom:22px;color:var(--bosco)}
+
+/* demo */
+.demo{background:var(--bosco);color:var(--carta);border-top:0}
+.demo h2{color:var(--carta)}
+.demo .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:start}
+.demo .intro{color:var(--salvia)}
+.prova{list-style:none;margin:0 0 36px;padding:0}
+.prova li{padding:18px 0;border-bottom:1px solid rgba(169,195,177,.3);display:flex;gap:16px;align-items:baseline}
+.prova li:first-child{border-top:1px solid rgba(169,195,177,.3)}
+.prova li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--burro);transform:translateY(-1px)}
+
+/* passaggi */
+.passi{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,36px);counter-reset:passo}
+.passi li{counter-increment:passo;border-top:3px solid var(--bosco);padding-top:22px}
+.passi li::before{content:counter(passo);display:block;font-weight:800;font-size:44px;line-height:1;color:var(--salvia);margin-bottom:16px}
+.passi h3{font-size:21px;color:var(--bosco);margin-bottom:10px;letter-spacing:-.01em}
+.passi p{color:var(--grigio);margin:0;font-size:17px}
+
+/* pacchetti */
+.listino{margin-top:48px;border-top:2px solid var(--bosco)}
+.voce{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) auto;gap:clamp(16px,3vw,40px);padding:30px 0;border-bottom:1px solid var(--linea);align-items:baseline}
+.voce h3{font-size:26px;color:var(--bosco)}
+.voce .per{display:inline-block;margin-top:10px;font-size:14px;font-weight:500;background:var(--burro);color:var(--bosco);padding:3px 10px;border-radius:999px}
+.voce p{margin:0;color:var(--grigio)}
+.prezzo{text-align:right;white-space:nowrap}
+.prezzo b{display:block;font-size:30px;font-weight:800;color:var(--bosco);letter-spacing:-.02em}
+.prezzo span{font-size:16px;color:var(--grigio)}
+.nota{margin-top:28px;color:var(--grigio);font-size:16px;max-width:46em}
+
+/* domande */
+.domande{margin-top:40px;max-width:52em}
+.domande details{border-bottom:1px solid var(--linea)}
+.domande details:first-child{border-top:1px solid var(--linea)}
+.domande summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-weight:700;font-size:20px;color:var(--bosco);position:relative}
+.domande summary::-webkit-details-marker{display:none}
+.domande summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-10px;border-right:2.5px solid var(--bosco);border-bottom:2.5px solid var(--bosco);transform:rotate(45deg);transition:transform .2s}
+.domande details[open] summary::after{transform:rotate(-135deg);margin-top:-3px}
+.domande details p{color:var(--grigio);margin:0 0 24px;max-width:40em}
+
+/* contatto */
+.contatto .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);align-items:start}
+.contatto .mail{display:inline-block;margin-top:8px;font-weight:700;font-size:20px;color:var(--bosco);text-underline-offset:4px}
+.modulo{background:var(--bianco);border:1px solid var(--linea);border-radius:20px;padding:clamp(22px,4vw,36px)}
+.campo{margin-bottom:18px}
+.campo label{display:block;font-weight:700;font-size:15px;margin-bottom:6px;color:var(--bosco)}
+.campo label span{font-weight:400;color:var(--grigio)}
+.campo input,.campo textarea{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:1.5px solid var(--linea);border-radius:10px;background:var(--carta);color:var(--inchiostro)}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--bosco);background:var(--bianco)}
+.campo textarea{min-height:110px;resize:vertical}
+.nascosto{position:absolute;left:-9999px}
+.modulo .legale{font-size:14px;color:var(--grigio);margin:16px 0 0}
+.modulo .bottone{width:100%}
+
+/* piede */
+.piede{background:var(--bosco);color:var(--salvia);padding:44px 0;font-size:15px}
+.piede .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+.piede b{color:var(--carta)}
+.piede a{color:var(--carta)}
+
+/* ---------- telefono e tablet ---------- */
+@media (max-width:900px){
+  .menu a:not(.bottone){display:none}
+  .apertura .wrap,.demo .wrap,.contatto .wrap{grid-template-columns:1fr}
+  .scena{margin-top:8px}
+  .cosa{grid-template-columns:1fr;gap:36px}
+  .passi{grid-template-columns:1fr 1fr}
+  .voce{grid-template-columns:1fr;gap:10px}
+  .prezzo{text-align:left}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .marchio,.marchio small{font-size:18px}
+  .passi{grid-template-columns:1fr}
+  .azioni .bottone{width:100%}
+  .avviso{left:-6px;right:6px;bottom:14px}
+  .schermo{height:540px}
+  .menu .bottone{padding:0 14px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="testata">
+  <div class="wrap">
+    <a class="marchio" href="#" aria-label="Minimind Studio, torna all'inizio">
+      <span class="punti" aria-hidden="true"><i></i><i></i></span>
+      minimind <small>studio</small>
+    </a>
+    <nav class="menu" aria-label="Menu principale">
+      <a href="#cosa">Cosa realizzo</a>
+      <a href="#demo">Demo</a>
+      <a href="#pacchetti">Pacchetti</a>
+      <a href="#domande">Domande</a>
+      <a class="bottone" href="#contatto">Demo gratuita</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<section class="apertura">
+  <div class="wrap">
+    <div>
+      <h1>Un sito su misura che prenota anche quando hai chiuso.</h1>
+      <p class="sotto">Realizzo siti per saloni, centri estetici, barbieri e piccole attività: i tuoi servizi, i tuoi prezzi, il calendario per prenotare e un assistente che risponde alle clienti. Prima di decidere, ti preparo gratis una demo con il nome della tua attività.</p>
+      <div class="azioni">
+        <a class="bottone" href="#contatto">Chiedi la tua demo gratuita</a>
+        <a class="bottone vuoto" href="https://saloonwebdemo.netlify.app" target="_blank" rel="noopener">Guarda un esempio</a>
+      </div>
+    </div>
+
+    <div class="scena">
+      <div class="cornice">
+      <div class="telefono" role="img" aria-label="Esempio di chat: alle 23:42 una cliente chiede se c'è posto sabato, l'assistente del salone propone due orari e conferma la prenotazione.">
+        <div class="schermo">
+          <div class="barra" aria-hidden="true"><span>23:42</span><span><i style="height:6px"></i><i style="height:9px"></i><i style="height:12px"></i></span></div>
+          <div class="chi" aria-hidden="true">
+            <div class="avatar">A</div>
+            <div><b>Aria · Maison Ardesia</b><small>Risponde subito</small></div>
+          </div>
+          <div class="messaggi" id="chat" aria-hidden="true">
+            <div class="msg cliente">Ciao! Avete posto sabato mattina per taglio e piega?</div>
+            <div class="msg aria">Ciao! Sabato ho libero alle 9:30 e alle 11:00. Taglio e piega costa 48&nbsp;€. Quale preferisci?</div>
+            <div class="msg cliente">Le 11:00, grazie</div>
+            <div class="msg aria">Fatto: sabato alle 11:00 con Giulia. Ti ho mandato la conferma via email.</div>
+          </div>
+        </div>
+      </div>
+      <div class="avviso" id="avviso" aria-hidden="true"><b>Nuova prenotazione</b>Sabato alle 11:00, taglio e piega. È già nel tuo calendario.</div>
+      </div>
+      <p class="didascalia">Il salone è chiuso, la prenotazione arriva lo stesso. <button type="button" id="riguarda" hidden>Riguarda</button></p>
+    </div>
+  </div>
+</section>
+
+<section class="sezione" id="cosa">
+  <div class="wrap">
+    <h2>Cosa trovi nel tuo sito</h2>
+    <p class="intro">Ogni sito lo disegno per l'attività che lo usa. Si apre bene sul telefono, perché è da lì che arrivano quasi tutte le clienti.</p>
+    <div class="cosa">
+      <div>
+        <svg class="segno" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="5" y="8" width="34" height="28" rx="5"/><path d="M5 16h34M12 24h12M12 29h8"/></svg>
+        <h3>Il sito, con il tuo nome</h3>
+        <p>Servizi, prezzi, foto, orari, indirizzo e il tuo voto su Google. Con i colori e lo stile della tua attività, non quelli di un modello qualsiasi.</p>
+      </div>
+      <div>
+        <svg class="segno" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="6" y="9" width="32" height="29" rx="5"/><path d="M6 18h32M15 5v8M29 5v8"/><path d="M16 27l4 4 8-8"/></svg>
+        <h3>Prenotazioni online</h3>
+        <p>Le clienti scelgono servizio, giorno e orario. Tu trovi la prenotazione in un foglio Google tuo, loro ricevono la mail di conferma. Nessuna commissione sugli appuntamenti.</p>
+      </div>
+      <div>
+        <svg class="segno" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 10h28a3 3 0 013 3v15a3 3 0 01-3 3H20l-8 7v-7H8a3 3 0 01-3-3V13a3 3 0 013-3z"/><path d="M15 20.5h.01M22 20.5h.01M29 20.5h.01" stroke-width="4" stroke-linecap="round"/></svg>
+        <h3>Un assistente che risponde</h3>
+        <p>Risponde alle domande di sempre (prezzi, orari, dove sei, se c'è posto) e prende la prenotazione. Anche di sera e la domenica, mentre tu lavori o riposi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sezione demo" id="demo">
+  <div class="wrap">
+    <div>
+      <h2>Prova la demo di Maison Ardesia</h2>
+      <p class="intro">È un salone di fantasia a Milano, fatto per farti vedere come funziona un sito con prenotazioni e assistente. Puoi provare tutto: non arriva niente a nessuno.</p>
+    </div>
+    <div>
+      <ul class="prova">
+        <li>Sfoglia il listino e la cartella colori</li>
+        <li>Scegli un servizio, un giorno e un orario dal calendario</li>
+        <li>Guarda la mail di conferma che riceverebbe la cliente</li>
+        <li>Chiedi ad Aria, l'assistente, se c'è posto sabato</li>
+      </ul>
+      <a class="bottone giallo" href="https://saloonwebdemo.netlify.app" target="_blank" rel="noopener">Apri la demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="sezione" id="come">
+  <div class="wrap">
+    <h2>Come funziona</h2>
+    <p class="intro">Tutto online, per email o in videochiamata. Vedi il tuo sito prima di spendere un euro.</p>
+    <ol class="passi">
+      <li>
+        <h3>Mi scrivi</h3>
+        <p>Bastano il nome dell'attività e la città. Servizi e prezzi li trovo io, dal tuo sito, da Google o da Treatwell.</p>
+      </li>
+      <li>
+        <h3>Ricevi la tua demo</h3>
+        <p>Entro 48 ore, gratis e senza impegno: il sito di prova con il tuo nome, i tuoi servizi e i tuoi prezzi.</p>
+      </li>
+      <li>
+        <h3>Decidi con calma</h3>
+        <p>Se ti piace, sistemiamo insieme colori, testi e foto. Ne parliamo per email o in una videochiamata di 15 minuti.</p>
+      </li>
+      <li>
+        <h3>Il sito va online</h3>
+        <p>In 7-10 giorni lavorativi, con il tuo indirizzo. Da lì in poi gli aggiornamenti li faccio io.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sezione" id="pacchetti">
+  <div class="wrap">
+    <h2>Pacchetti</h2>
+    <div class="listino">
+      <div class="voce">
+        <div><h3>Vetrina</h3></div>
+        <p>Il sito su misura, senza prenotazioni: servizi, prezzi, foto, orari, mappa e contatti. Va bene anche per ristoranti, studi e negozi.</p>
+        <div class="prezzo"><b>590 €</b><span>+ 29 € al mese</span></div>
+      </div>
+      <div class="voce">
+        <div><h3>Completo</h3><span class="per">Per chi lavora su appuntamento</span></div>
+        <p>Il sito, il calendario per prenotare online con la mail di conferma e l'assistente chat che risponde e prenota.</p>
+        <div class="prezzo"><b>1.190 €</b><span>+ 59 € al mese</span></div>
+      </div>
+      <div class="voce">
+        <div><h3>Solo assistente</h3></div>
+        <p>Per chi ha già un sito o usa solo Instagram: l'assistente si aggiunge al tuo sito o si apre dal link in bio.</p>
+        <div class="prezzo"><b>390 €</b><span>+ 39 € al mese</span></div>
+      </div>
+    </div>
+    <p class="nota">Il canone mensile copre dominio, hosting, le piccole modifiche (prezzi, orari, foto) e l'assistenza via email. Nessun vincolo: si disdice con 30 giorni di preavviso e il sito resta tuo. Il preventivo preciso arriva insieme alla demo, prima di qualsiasi impegno.</p>
+  </div>
+</section>
+
+<section class="sezione" id="domande">
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+    <div class="domande">
+      <details>
+        <summary>Ho già Treatwell o Fresha. Mi serve un sito?</summary>
+        <p>Non devi toglierli: continuano a portarti clienti nuove. Il sito serve per chi ti cerca già per nome, da Instagram, da Google o col passaparola, e vuole prenotare direttamente con te, senza passare da una vetrina dove compaiono anche altri saloni.</p>
+      </details>
+      <details>
+        <summary>Non ho tempo di gestire un sito.</summary>
+        <p>Non devi gestirlo tu. Le prenotazioni arrivano in un foglio Google che guardi dal telefono, e quando cambi un prezzo o un orario mi mandi un messaggio e lo aggiorno io.</p>
+      </details>
+      <details>
+        <summary>Il sito è mio?</summary>
+        <p>Sì. Le prenotazioni restano nel tuo account Google, non nel mio, e se un giorno smetti ti consegno tutti i file del sito.</p>
+      </details>
+      <details>
+        <summary>Lavori solo a Milano e Torino?</summary>
+        <p>Lavoro tutto online, per email o videochiamata, quindi posso realizzare il sito per un'attività in qualsiasi città.</p>
+      </details>
+      <details>
+        <summary>E la privacy delle mie clienti?</summary>
+        <p>Ogni sito ha la sua informativa privacy e i dati delle prenotazioni restano nel tuo account. Il sito non usa cookie di profilazione.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sezione contatto" id="contatto">
+  <div class="wrap">
+    <div>
+      <h2>Chiedi la tua demo gratuita</h2>
+      <p class="intro">Scrivimi il nome della tua attività e la città: entro 48 ore ti mando il sito di prova. Se preferisci, scrivimi direttamente.</p>
+      <a class="mail" href="mailto:studiominimind@gmail.com">studiominimind@gmail.com</a>
+    </div>
+    <form class="modulo" name="richiesta-demo" method="POST" action="/grazie.html" data-netlify="true" netlify-honeypot="campo-trappola">
+      <input type="hidden" name="form-name" value="richiesta-demo">
+      <p class="nascosto"><label>Non compilare questo campo <input name="campo-trappola" tabindex="-1" autocomplete="off"></label></p>
+      <div class="campo">
+        <label for="nome">Il tuo nome</label>
+        <input id="nome" name="nome" type="text" autocomplete="given-name" required>
+      </div>
+      <div class="campo">
+        <label for="attivita">Attività e città</label>
+        <input id="attivita" name="attivita" type="text" placeholder="Es. Salone Bianca, Torino" required>
+      </div>
+      <div class="campo">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="campo">
+        <label for="messaggio">Messaggio <span>(facoltativo)</span></label>
+        <textarea id="messaggio" name="messaggio" placeholder="Il link al tuo sito o al profilo Treatwell, se ce l'hai"></textarea>
+      </div>
+      <button class="bottone" type="submit">Chiedi la demo</button>
+      <p class="legale">Uso questi dati solo per risponderti e prepararti la demo. Dettagli nell'<a href="privacy.html">informativa privacy</a>.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="piede">
+  <div class="wrap">
+    <span><b>Andrea – Minimind Studio</b> · Siti web personalizzati e su misura</span>
+    <span><a href="mailto:studiominimind@gmail.com">studiominimind@gmail.com</a> · <a href="privacy.html">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ridotto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (ridotto) return;
+  document.documentElement.classList.add('js');
+  var chat = document.getElementById('chat');
+  var msgs = Array.prototype.slice.call(chat.querySelectorAll('.msg'));
+  var avviso = document.getElementById('avviso');
+  var riguarda = document.getElementById('riguarda');
+  var timers = [];
+
+  function attesa(ms, fn){ timers.push(setTimeout(fn, ms)); }
+  function puntini(){
+    var d = document.createElement('div');
+    d.className = 'msg aria digita visibile';
+    d.innerHTML = '<i></i><i></i><i></i>';
+    return d;
+  }
+  function avvia(){
+    timers.forEach(clearTimeout); timers = [];
+    msgs.forEach(function(m){ m.classList.remove('visibile'); m.style.display = 'none'; });
+    avviso.classList.remove('visibile');
+    riguarda.hidden = true;
+    var t = 600;
+    msgs.forEach(function(m){
+      var risposta = m.classList.contains('aria');
+      if (risposta){
+        var p;
+        attesa(t, function(){ p = puntini(); chat.insertBefore(p, m); });
+        t += 1300;
+        attesa(t, function(){ if (p) p.remove(); });
+      }
+      attesa(t, function(){ m.style.display = ''; requestAnimationFrame(function(){ m.classList.add('visibile'); }); });
+      t += risposta ? 1100 : 1000;
+    });
+    attesa(t + 200, function(){ avviso.classList.add('visibile'); riguarda.hidden = false; });
+  }
+  riguarda.addEventListener('click', avvia);
+
+  // parte quando il telefono entra nello schermo
+  if ('IntersectionObserver' in window){
+    var o = new IntersectionObserver(function(e){
+      if (e[0].isIntersecting){ avvia(); o.disconnect(); }
+    }, {threshold:.35});
+    o.observe(chat);
+  } else { avvia(); }
+})();
+</script>
+</body>
+</html>
